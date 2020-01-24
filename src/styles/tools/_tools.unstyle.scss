@@ -1,0 +1,28 @@
+// ==========================================================================
+// #UNSTYLE
+// ========================================================================== */
+
+// Usualy for links (<a>).
+// Remove the elements's color, font, weight, style and decoration.
+//
+// There is also a utility class to achieve the same thing (.u-unstyled)
+//
+// 1. respect the cointainer's text styling.
+
+@mixin unstyle($important: false) {
+
+  @if ($important == true) {
+    $important: '!important';
+  } @else if ($important == false) {
+    $important: null;
+  } @else {
+    @error "`#{$important}` needs to be `true` or `false`.";
+  }
+
+  color:            inherit #{$important}; /* [1] */
+  text-decoration:  inherit #{$important}; /* [1] */
+  font-weight:      inherit #{$important}; /* [1] */
+  font-style:       inherit #{$important}; /* [1] */
+  font-family:      inherit #{$important}; /* [1] */
+  background-image: none #{$important};
+}

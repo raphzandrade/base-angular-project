@@ -1,0 +1,67 @@
+@import '~@angular/material/theming';
+
+@import '../settings/index';
+
+
+@mixin _lj-card-label-theme-base($color) {
+  color:            mat-color($color, default-contrast);
+  background-color: mat-color($color, default);
+
+  &::before {
+    border-color: transparent transparent mat-color($color, darker) transparent;
+  }
+
+  &--has-icon {
+    color:            mat-color($color, default);
+    background-color: mat-color($color, default-contrast);
+  }
+
+  &__icon {
+    background-color: mat-color($color, default);
+    color:            mat-contrast($color, default);
+
+    box-shadow:
+      0 2px 4px 1px rgba(mat-color($color, darker), .35);
+  }
+}
+
+
+@mixin lj-cards-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent:  map-get($theme, accent);
+  $warn:    map-get($theme, warn);
+
+  .c-card {
+    color:            $app-dark-primary-text;
+    background-color: $app-light-primary-bg;
+  }
+
+  .c-card-label {
+    background-color: $app-dark-secondary-bg;
+    color:            $app-light-primary-text;
+
+    &::before {
+      border-style: solid;
+      border-width: 0 0 $global-spacing-unit-tiny $global-spacing-unit-tiny;
+      border-color: transparent transparent $app-dark-primary-bg transparent;
+    }
+
+    &--has-icon {
+      background-color: $app-light-primary-bg;
+      color:            $app-dark-primary-text;
+    }
+
+    &__icon {
+      background-color: $app-dark-primary-bg;
+      color:            $app-light-primary-text;
+
+      box-shadow:
+        0 2px 4px 1px $app-dark-primary-bg, .35;
+    }
+
+    :host(.t-primary) & { @include _lj-card-label-theme-base($primary); }
+    :host(.t-accent) &  { @include _lj-card-label-theme-base($accent); }
+    :host(.t-warn) &    { @include _lj-card-label-theme-base($warn); }
+  }
+
+}

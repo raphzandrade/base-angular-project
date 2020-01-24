@@ -1,0 +1,40 @@
+.o-avatar {
+  border-radius:    50%;
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  margin-bottom:    0;
+
+  &,
+  .mat-icon {
+    @include icon-size($global-spacing-unit-large);
+  }
+
+  img {
+    max-width:        100%;
+    max-height:       100%;
+    object-fit:       cover;
+    object-position:  center;
+  }
+
+  .o-avatar__image {
+    position:         relative;
+    width:            100%;
+    border-radius:    100%;
+    object-fit:       cover;
+    object-position:  center center;
+    overflow:         hidden;
+    display:          flex;
+    align-items:      center;
+    justify-content:  center;
+    z-index:          1;
+  }
+
+  .o-avatar__image--default {
+    @include icon-size($global-baseline * 4);
+    color:          mat-color($app-accent, 500);
+    border-radius:  0;
+    position:       absolute;
+    z-index:        0;
+  }
+}

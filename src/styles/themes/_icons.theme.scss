@@ -1,0 +1,31 @@
+@import '../settings/index';
+
+@mixin icon-themes() {
+
+    &--primary-light {
+        fill: mat-color($app-primary, 300);
+    }
+    &--primary {
+        fill: mat-color($app-primary, 500);
+    }
+    &--primary-dark {
+        fill: mat-color($app-primary, 700);
+    }
+
+    &--accent-light {
+        fill: mat-color($app-accent, 300);
+    }
+    &--accent {
+        fill: mat-color($app-accent, 500);
+    }
+    &--accent-dark {
+        fill: mat-color($app-accent, 700);
+    }
+
+    &--attention {
+      fill: mat-color($app-attention, 500);
+    }
+    &--attention-dark {
+      fill: mat-color($app-attention, 700);
+    }
+}

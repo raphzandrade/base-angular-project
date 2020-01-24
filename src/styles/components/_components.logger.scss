@@ -1,0 +1,6 @@
+.c-logger {
+
+  &--bigger span {
+    @include font-size($global-gamma-size);
+  }
+}

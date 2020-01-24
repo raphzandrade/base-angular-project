@@ -1,0 +1,12 @@
+.c-card {
+
+  &__button {
+    width: 100%;
+
+    .c-btn {
+      margin-bottom:  $global-spacing-unit-small;
+      font-weight:    $bold;
+      text-transform: uppercase;
+    }
+  }
+}

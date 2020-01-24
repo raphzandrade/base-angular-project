@@ -1,0 +1,35 @@
+.c-overlay-panel {
+  &.mat-autocomplete-panel {
+
+    &.c-overlay-panel--search-autocomplete {
+      @include mq($from: tablet-landscape) {
+        padding-bottom: $global-spacing-unit-small;
+        border-radius:  0 0 $global-radius $global-radius;
+        min-height:     ($global-baseline * 35);
+        max-height:     calc(50vh - #{$global-spacing-unit-huge});
+      }
+    }
+
+    &.c-overlay-panel--full-height {
+
+      @each $bp-name, $height in $toolbar-height {
+        @if (
+          $bp-name != 'phone'
+          and $bp-name != 'tablet-portrait'
+        ) {
+          @include mq($from: $bp-name) {
+            max-height: calc(100vh - #{$height});
+          }
+        }
+      }
+
+    }
+
+  }
+}
+
+.cdk-overlay-pane {
+  .c-menu--filter {
+    max-height: 50vh;
+  }
+}

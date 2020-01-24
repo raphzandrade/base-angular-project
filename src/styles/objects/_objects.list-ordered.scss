@@ -1,0 +1,47 @@
+/* ==========================================================================
+   #LIST-ORDERED
+   ========================================================================== */
+
+/**
+ * Ordered list with decimal depth indicator.
+ */
+
+.o-list-ordered {
+  display:          block;
+  list-style-type:  decimal;
+  counter-reset:    item;
+
+  &--no-indent { margin-left: 0; }
+
+  &__title { display: inline; }
+
+  & > &__item {
+    display:        block;
+    margin-bottom:  $global-spacing-unit-small;
+
+    &::before {
+      content:            counters(item, ".") ". ";
+      counter-increment:  item;
+    }
+
+  }
+
+}
+
+.o-list-ordered,
+.o-list-ordered--alphabetic {
+  &__item::before { font-weight: $bold; }
+}
+
+.o-list-ordered--alphabetic {
+  list-style-type:  lower-alpha;
+
+  & > .o-list-ordered__item {
+    margin-bottom:  ($global-spacing-unit-tiny / 2);
+
+    &::before {
+      content:            counter(item, lower-alpha) ". ";
+      counter-increment:  item;
+    }
+  }
+}

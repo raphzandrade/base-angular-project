@@ -1,0 +1,35 @@
+@import '../settings/index';
+
+@mixin color-themes() {
+  &--primary-light {
+    color: mat-color($app-primary, 300);
+  }
+  &--primary {
+    color: mat-color($app-primary, 500);
+  }
+  &--primary-dark {
+    color: mat-color($app-primary, 700);
+  }
+
+  &--accent-light {
+    color: mat-color($app-accent, 300);
+  }
+  &--accent {
+    color: mat-color($app-accent, 500);
+  }
+  &--accent-dark {
+    color: mat-color($app-accent, 700);
+  }
+
+
+  &--attention-light {
+    color: mat-color($app-accent, 300);
+  }
+  &--attention {
+    color: mat-color($app-attention, 500);
+  }
+  &--attention-dark {
+    color: mat-color($app-attention, 700);
+  }
+}
+

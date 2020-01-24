@@ -1,0 +1,39 @@
+@import '../settings/settings.colors';
+
+$app-primary: mat-palette($app-primary, 300, 50, 500);
+$app-accent:  mat-palette($app-accent, 500, 200, 700);
+$app-warn:    mat-palette($app-warn, 500, 200, 700);
+
+$app-light-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+$app-dark-theme:  mat-dark-theme($app-primary, $app-accent, $app-warn);
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$app-typography: mat-typography-config(
+  $font-family: $global-body-font
+);
+
+@function lj-light-theme-foreground($color) {
+  @return (
+    base:              $color,
+    text:              $color,
+    divider:           $app-dark-dividers,
+    dividers:          $app-dark-dividers,
+    disabled:          rgba($color, 0.38),
+    disabled-button:   rgba($color, 0.38),
+    disabled-text:     rgba($color, 0.38),
+    hint-text:         rgba($color, 0.38),
+    secondary-text:    rgba($color, 0.54),
+  );
+};
+
+// You can put any color here. I've chosen mat-color($my-app-primary, 700)
+$app-foreground: lj-light-theme-foreground($app-dark-primary-text);
+
+
+@include angular-material-theme(map-merge($app-light-theme, ( foreground: $app-foreground )));
+@include angular-material-typography($app-typography);
+
+.t-lejour-dark {
+  @include angular-material-theme($app-dark-theme);
+}

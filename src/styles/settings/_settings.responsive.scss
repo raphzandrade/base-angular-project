@@ -1,0 +1,30 @@
+///*------------------------------------*\
+//    #SETTINGS-RESPONSIVE
+//\*------------------------------------*/
+
+// To enable support for browsers that do not support @media queries,
+// (IE <= 8, Firefox <= 3, Opera <= 9) set $mq-responsive to false
+// Create a separate stylesheet served exclusively to these browsers,
+// meaning @media queries will be rasterized, relying on the cascade itself
+$mq-responsive: true;
+
+// Breakpoints based on the article below, but in a mobile-first way,
+// and some input from myself (@herzinger)
+// https://medium.freecodecamp.org/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862
+$mq-breakpoints: (
+  phone             : 150px,
+  tablet-portrait   : 590px,
+  tablet-landscape  : 900px,
+  desktop           : 1200px,
+  stable            : $global-max-width
+);
+
+// Define the breakpoint from the $mq-breakpoints list that should
+// be used as the target width when outputting a static stylesheet
+// (i.e. when $mq-responsive is set to 'false').
+$mq-static-breakpoint: stable;
+
+// If you want to display the currently active breakpoint in the top
+// right corner of your site during development, add the breakpoints
+// to this list, ordered by width, e.g. (mobile, tablet, desktop).
+// $mq-show-breakpoints: (phone, tablet-portrait, tablet-landscape, desktop, stable);

@@ -1,0 +1,87 @@
+/* ==========================================================================
+   #TYPE
+   ========================================================================== */
+
+/**
+ * Site wide assorted type elements configuration
+ *
+ * 1. Fonts on OSX will look more consistent with other systems that do not
+ *    render text using sub-pixel anti-aliasing.
+ */
+
+html {
+  font-family:  unquote($global-body-font);
+  color:        $app-dark-primary-text;
+
+  -moz-osx-font-smoothing: grayscale;    /* [1] */
+   -webkit-font-smoothing: antialiased;  /* [1] */
+}
+
+
+a {
+  color:            $app-base-link-color;
+  text-decoration:  none;
+  cursor:           pointer;
+
+  transition:
+    color $global-transition ease-in-out;
+
+  &:hover {
+    color:           $app-hover-link-color;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: $app-active-link-color;
+  }
+
+  figure & {
+    display: block;
+
+    &:hover { color: currentColor; }
+  }
+
+  h1 &,
+  h2 &,
+  h3 &,
+  h4 &,
+  h5 &,
+  h6 & {
+    color: $app-dark-primary-text;
+
+    &:hover {
+      color: $app-hover-link-color;
+    }
+  }
+}
+
+
+p { margin-bottom: $global-spacing-unit-small; }
+
+b, strong { font-weight: $bold; }
+
+
+
+
+
+/**
+ * Simple default styles for headings 1 through 6. Anything more opinionated
+ * than simple font-size changes should likely be applied via classes (see:
+ * http://csswizardry.com/2016/02/managing-typography-on-large-apps/).
+ */
+
+// $global-alpha to $global-zeta font-size variables
+// are defined in 'settings/settings.global'.
+
+h1, .alpha    { @include font-size($global-alpha-size - 8); }
+h2, .beta     { @include font-size($global-beta-size); }
+h3, .gamma    { @include font-size($global-gamma-size); }
+h4, .delta    { @include font-size($global-delta-size); }
+h5, .epsilon  { @include font-size($global-epsilon-size); }
+
+@include mq($from: tablet-landscape) {
+  h1, .alpha    { @include font-size($global-alpha-size); }
+}
+
+
+h1, h2, h3 { font-family: unquote($global-headings-font); }

@@ -1,0 +1,45 @@
+///* ========================================================================
+//   #GRADIENT-OVERLAY
+//   ======================================================================== */
+
+///
+ // Mixin to create a gradient overlay line the one in the hero component
+ // @param  { String }  $gradient - a valid css gradient, or list of such
+ // @param  { Number }  $opacity  - 0 (fully transparent) to 1 (fully opaque)
+ // @param  { String }  $bgcolor  - optional solid color to apply in addition
+ // @param  { String }  $blend    - blend mode for browsers that support it, 
+ //                                 defaults to 'overlay'.
+ ///
+
+@mixin gradient-overlay($gradient, $opacity: .5, $bgcolor: transparent, $blend: overlay) {
+  
+  @if ($bgcolor != transparent and type-of($bgcolor) != color) {
+    @error "`#{$bgcolor}` needs to be transparent or a valid color. `#{type-of($bgcolor)}`";
+  }
+  
+  @if (type-of($opacity) != number) {
+    @error "`#{$opacity}` needs to be a number.";
+  }
+  
+  @if ($opacity > 1 or $opacity < 0) {
+    @error "`#{$opacity}` needs in the 0 to 1 range.";
+  }
+
+  position: relative;
+
+  &::after {
+    display: block;
+    content: '';
+
+    position: absolute;
+    top: 0;   right: 0;
+    left: 0;  bottom: 0;
+    z-index: 0;
+
+    background-blend-mode:  $blend;
+    background-color:       $bgcolor;
+    background-image:       $gradient;
+    opacity:                $opacity;
+  }
+
+}

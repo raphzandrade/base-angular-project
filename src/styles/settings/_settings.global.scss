@@ -1,0 +1,81 @@
+///* ========================================================================
+//   #GLOBAL
+//   ======================================================================== */
+
+// The global settings file contains any project-wide variables; things that
+// need to be made available to the entire codebase.
+
+// Standardise some UI treatments.
+$global-radius:     ($global-baseline);
+$global-transition: .3s;
+
+
+
+
+
+// flexgrid object
+
+$inuit-flexgrid-spacing-sizes: (
+  null: $global-spacing-unit,
+  "--tiny": $global-spacing-unit-tiny,
+  "--small": $global-spacing-unit-small,
+  "--large": $global-spacing-unit-large,
+  "--huge": $global-spacing-unit-huge,
+  "--flush": 0
+);
+
+// Typography
+// ========================================================================== */
+
+$global-body-font: 'Lato, "Helvetica Neue", Helvetica, Arial, sans-serif';
+$global-headings-font: 'Merriweather, georgia, "Times New Roman", serif';
+
+// heading font sizes
+$global-alpha-size: 24px;
+$global-beta-size: 18px;
+$global-gamma-size: 16px;
+$global-delta-size: 14px;
+$global-epsilon-size: 12px;
+
+// font-weight
+$regular: 400;
+$bold: 700;
+
+// Measurements
+// ========================================================================== */
+
+$global-max-width: 1400px;
+
+$toolbar-height: (
+  "phone": $global-baseline * 9,
+  "tablet-landscape": $global-baseline * 12
+) !default;
+
+// aspect ratios - predefines inuitcss` defaults
+// ========================================================================== */
+
+// 1. hero images on large screens
+// 2. blog featured images aspect ratio
+//    rounded down by 3px at full width (870px)
+
+$inuit-ratios: (
+  "hd": (
+    16: 9
+  ),
+  "square": (
+    1: 1
+  ),
+  "normal-card": (
+    7: 5
+  ),
+  "tall-card": (
+    7: 9
+  )
+) !default;
+
+$inuit-crops: $inuit-ratios !default;
+
+// Other pre-definitions
+// ========================================================================== */
+
+$inuit-list-inline-delimiter: "&";

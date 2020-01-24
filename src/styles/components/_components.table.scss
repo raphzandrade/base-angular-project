@@ -1,0 +1,37 @@
+.c-table {
+  @include z-depth($level: 3);
+  border-radius: $global-baseline * 3;
+  overflow: hidden;
+  margin-bottom: $global-spacing-unit;
+
+  &__header {
+    background-color: mat-color($app-primary, 300);
+    color: mat-contrast($app-primary, 300);
+    font-weight: $bold;
+  }
+
+  &__title {
+    @include font-size($global-delta-size);
+    padding: $global-spacing-unit-small;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  &__body {
+    @include font-size($global-delta-size);
+    color: $app-dark-primary-text;
+    text-align: center;
+  }
+
+  &__column {
+    padding: $global-spacing-unit $global-spacing-unit-small;
+    line-height: 1;
+  }
+
+  &__row {
+    border-bottom: 1px solid $app-dark-dividers;
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}

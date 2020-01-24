@@ -1,0 +1,108 @@
+@import '~@angular/material/theming';
+
+@import '../settings/index';
+
+
+@mixin _lj-buttons-theme-base($color) {
+
+  &--solid {
+    background-color: mat-color($color, default);
+    color:            mat-color($color, default);
+
+    box-shadow:
+      0 6px 20px -8px;
+
+    &:hover {
+      background-color: mat-color($color, darker);
+
+      box-shadow:
+        0 8px 22px -6px;
+    }
+
+    .c-btn__content-wrapper,
+    .c-btn__icon {
+      color: mat-color($color, default-contrast);
+    }
+  }
+
+
+  &--solid-reversed {
+    background-color: mat-color($color, default-contrast);
+    color:            mat-color($color, default);
+
+    &:hover {
+      color: mat-color($color, darker);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    border-color:     mat-color($color, default);
+    color:            mat-color($color, default);
+
+    &:hover {
+      border-color: mat-color($color, darker);
+      color:        mat-color($color, darker);
+    }
+
+  }
+
+}
+
+@mixin lj-buttons-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent:  map-get($theme, accent);
+  $warn:    map-get($theme, warn);
+
+  .c-btn {
+    transition:
+      color            $global-transition ease-in-out,
+      background-color $global-transition ease-in-out,
+      border-color     $global-transition ease-in-out,
+      box-shadow       $global-transition ease-in-out;
+
+    &--solid {
+      background-color: transparent;
+      border:           none;
+      color:            currentColor;
+    }
+
+    &--solid-reversed {
+      background-color: currentColor;
+      border:           none;
+      color:            $app-light-primary-bg;
+    }
+
+    &--solid,
+    &--solid-reversed {
+      &.c-btn:disabled {
+        background-color: $app-dark-disabled-button;
+        color:            $app-dark-disabled-text;
+        cursor:           default;
+      }
+    }
+
+    &--outline {
+      background-color: transparent;
+      border-style:     solid;
+      border-width:     1px;
+      border-color:     currentColor;
+      color:            currentColor;
+
+      &.c-btn:disabled {
+        color:        $app-dark-disabled-text;
+        border-color: $app-dark-disabled-button;
+        cursor:       default;
+
+        .mat-ripple-element { display: none; }
+      }
+    }
+
+    .c-btn:disabled .mat-ripple-element { display: none; }
+
+    :host(.t-primary) & { @include _lj-buttons-theme-base($primary); }
+    :host(.t-accent) &  { @include _lj-buttons-theme-base($accent); }
+    :host(.t-warn) &    { @include _lj-buttons-theme-base($warn); }
+  }
+
+}

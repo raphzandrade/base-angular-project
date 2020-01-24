@@ -1,0 +1,24 @@
+/* ==========================================================================
+   #WRAPPER
+   ========================================================================== */
+
+/**
+ * Page-level constraining and wrapping elements.
+ */
+
+$global-max-width: 1400px !default;
+
+
+.o-wrapper {
+  padding-right:  $global-spacing-unit-small;
+  padding-left:   $global-spacing-unit-small;
+  margin-right:   auto;
+  margin-left:    auto;
+  width:          100%;
+  max-width:      $global-max-width;
+
+  @include mq($from: desktop) {
+    padding-right: $global-spacing-unit;
+    padding-left:  $global-spacing-unit;
+  }
+}

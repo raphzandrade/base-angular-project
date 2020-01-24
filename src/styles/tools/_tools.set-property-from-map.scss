@@ -1,0 +1,27 @@
+///* ========================================================================
+//   #SET-PROPERTY-FROM-MAP
+//   ======================================================================== */
+
+///
+ // Mixin to set responsive values to a property based of a sass map
+ // @param  { String }  $property - the css property to receive the value
+ // @param  { Object }  $map - the sass map to get the values from
+ ///
+
+@mixin setPropertyFromMap($property: 'margin-top', $map: $toolbar-height) {
+
+  #{$property}: map-get($map, 'phone');
+
+  @each $bp-name, $height in $map {
+
+    @if ($bp-name != 'phone') {
+
+      @include mq($from: $bp-name) {
+        #{$property}: $height;
+      }
+
+    }
+
+  }
+
+}

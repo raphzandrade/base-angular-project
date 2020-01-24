@@ -1,0 +1,125 @@
+///* ========================================================================
+//   #Z-DEPTH
+//   ======================================================================== */
+
+/**
+ * A mixin which helps you to add depth to elements according to the
+ * Google Material Design spec:
+ * http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality
+ *
+ * Please note that the values given in the specification cannot be used as is.
+ * To create the same visual experience the blur parameter has to be doubled.
+ *
+ * Based on: https://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d
+ *           by Florian Kutschera (@gefangenimnetz),
+ *           Conceptboard GmbH (@conceptboardapp)
+ *
+ */
+
+
+@function is_int($n) { @return round($n) == $n; }
+
+@mixin z-depth($level: 1, $omni: false, $important: false) {
+
+  // important!
+  @if ($important == true) {
+    $important: '!important';
+  } @else if ($important == false) {
+    $important: null;
+  } @else {
+    @error "`#{$important}` needs to be `true` or `false`.";
+  }
+
+
+  // Simple validation
+  @if not unitless($level) {
+
+    @error "D’oh! `#{$level}` should be unitless.";
+
+  } @else if is_int($level) and $level == 1 {
+
+    @if ($omni == true) {
+      box-shadow:
+        0 0 2px mat-color($mat-grey, 800, .05),
+        0 0 4px mat-color($mat-grey, 700, .05) #{$important};
+    } @else {
+      box-shadow:
+        0 2px 2px mat-color($mat-grey, 800, .05),
+        0 4px 4px mat-color($mat-grey, 700, .05) #{$important};
+    }
+
+  } @else if is_int($level) and $level == 2 {
+
+    @if ($omni == true) {
+      box-shadow: 0 0 2px mat-color($mat-grey, 800, .05),
+      0 0 4px mat-color($mat-grey, 700, .05),
+      0 0 8px mat-color($mat-grey, 800, .05) #{$important};
+    } @else {
+      box-shadow:
+        0 2px 2px mat-color($mat-grey, 800, .05),
+        0 4px 4px mat-color($mat-grey, 700, .05),
+        0 8px 8px mat-color($mat-grey, 800, .05) #{$important};
+    }
+
+  } @else if is_int($level) and $level == 3 {
+
+    @if ($omni == true) {
+      box-shadow:
+        0 0 2px mat-color($mat-grey, 800, .05),
+        0 0 4px mat-color($mat-grey, 700, .05),
+        0 0 8px mat-color($mat-grey, 800, .05),
+        0 0 16px mat-color($mat-grey, 900, .05) #{$important};
+    } @else {
+      box-shadow:
+        0 2px 2px mat-color($mat-grey, 800, .05),
+        0 4px 4px mat-color($mat-grey, 700, .05),
+        0 8px 8px mat-color($mat-grey, 800, .05),
+        0 16px 16px mat-color($mat-grey, 900, .05) #{$important};
+    }
+
+
+  } @else if is_int($level) and $level == 4 {
+
+    @if ($omni == true) {
+      box-shadow:
+        0 0 2px mat-color($mat-grey, 800, .05),
+        0 0 4px mat-color($mat-grey, 700, .05),
+        0 0 8px mat-color($mat-grey, 800, .05),
+        0 0 16px mat-color($mat-grey, 900, .05),
+        0 0 32px mat-color($mat-grey, 700, .05) #{$important};
+    } @else {
+      box-shadow:
+      0 2px 2px mat-color($mat-grey, 800, .05),
+      0 4px 4px mat-color($mat-grey, 700, .05),
+      0 8px 8px mat-color($mat-grey, 800, .05),
+      0 16px 16px mat-color($mat-grey, 900, .05),
+      0 32px 32px mat-color($mat-grey, 700, .05) #{$important};
+    }
+
+  } @else if is_int($level) and $level == 5 {
+
+    @if ($omni == true) {
+      box-shadow:
+        0 0 2px mat-color($mat-grey, 800, .05),
+        0 0 4px mat-color($mat-grey, 700, .05),
+        0 0 8px mat-color($mat-grey, 800, .05),
+        0 0 16px mat-color($mat-grey, 900, .05),
+        0 0 32px mat-color($mat-grey, 700, .05),
+        0 0 64px mat-color($mat-grey, 900, .05) #{$important};
+    } @else {
+      box-shadow:
+        0 2px 2px mat-color($mat-grey, 800, .05),
+        0 4px 4px mat-color($mat-grey, 700, .05),
+        0 8px 8px mat-color($mat-grey, 800, .05),
+        0 16px 16px mat-color($mat-grey, 900, .05),
+        0 32px 32px mat-color($mat-grey, 700, .05),
+        0 64px 64px mat-color($mat-grey, 900, .05) #{$important};
+    }
+
+  } @else {
+
+    @error "D’oh! $level should and integer between 1 and 5. Was `#{$level}`";
+
+  }
+
+}

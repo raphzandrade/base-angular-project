@@ -1,0 +1,40 @@
+///* ========================================================================
+//   #HERO-IMAGE
+//   ======================================================================== */
+
+///
+ // Mixin to create responsive image background for the a page's hero
+ // @param  { String }  $path - the path to the images set dir, with trailing slash (/)
+ // @param  { String }  $page - the page's name
+ //
+ // images naming convention: hero-[$page]@[breakpoint-name].jpg
+ // i.e.: hero-home@desktop.jpg
+ ///
+
+@mixin hero-image($path, $page, $important: false) {
+
+   // important!
+   @if ($important == true) {
+     $important: '!important';
+   } @else if ($important == false) {
+     $important: null;
+   } @else {
+     @error "`#{$important}` needs to be `true` or `false`.";
+   }
+
+  background-image: url($path + 'hero-' + $page + '@phone.jpg') #{$important};
+
+  @each $bp-name, $bp-value in $mq-breakpoints {
+
+    @if ($bp-name != 'phone') {
+
+      @include mq($from: $bp-name) {
+        background-image:
+          url($path + 'hero-' + $page + '@' + $bp-name + '.jpg') #{$important};
+      }
+
+    }
+
+  }
+
+}

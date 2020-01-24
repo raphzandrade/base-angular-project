@@ -1,0 +1,52 @@
+///* ========================================================================
+//   #FONT-SIZE
+//   ======================================================================== */
+
+// Generate a font-size and baseline-compatible line-height.
+
+@function line-height($font-size, $line-height: 'auto', $modifier: 0) {
+  @if ($line-height == "auto") {
+
+    // Define how many grid lines each text line should span
+    $lines: ceil($font-size / $inuit-global-baseline) + $modifier + 1;
+    $line-height: $lines * $inuit-global-baseline;
+
+    @return ($line-height / $font-size);
+  }
+
+  @else {
+
+    @if (type-of($line-height) == number or $line-height == "inherit" or $line-height == "normal") {
+      @return $line-height;
+    }
+
+    @else if ($line-height != 'none' and $line-height != false) {
+      @error "D’oh! `#{$line-height}` is not a valid value for `$line-height`."
+    }
+
+  }
+
+}
+
+
+@mixin inuit-font-size($font-size, $line-height: auto, $modifier: 0, $important: false) {
+
+  @if (type-of($font-size) == number) {
+    @if (unit($font-size) != "px") {
+      @error "`#{$font-size}` needs to be a pixel value.";
+    }
+  } @else {
+    @error "`#{$font-size}` needs to be a number.";
+  }
+
+  @if ($important == true) {
+    $important: '!important';
+  } @else if ($important == false) {
+    $important: null;
+  } @else {
+    @error "`#{$important}` needs to be `true` or `false`.";
+  }
+
+  font-size:    ($font-size / $inuit-global-font-size) * 1rem $important;
+  line-height:  line-height($font-size, $line-height, $modifier);
+}

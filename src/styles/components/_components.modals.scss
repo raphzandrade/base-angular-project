@@ -1,0 +1,277 @@
+.c-modal {
+
+  &--transparent {
+    width:  100%;
+    height: 100%;
+    padding: 0;
+
+    @include mq($from: tablet-portrait) {
+      @include z-depth(2);
+
+      display:    flex;
+      width:      calc(100vw - #{$global-spacing-unit-small});
+      max-height: calc(100vh - #{$global-spacing-unit});
+      height:     auto;
+      margin:     $global-spacing-unit-small;
+
+      .mat-dialog-container {
+        background: transparent;
+        box-shadow: none;
+        padding:    0;
+        height:     auto;
+      }
+    }
+
+    .mat-dialog-container { padding: 0; }
+  }
+
+  &--full {
+    width:          100vw;
+    height:         auto;
+    border-radius:  0;
+    padding:        0;
+    overflow:       hidden;
+
+    .mat-dialog-container {
+      display:          flex;
+      justify-content:  center;
+      align-items:      center;
+      background-color: rgba(#0c0c0c, .95);
+      padding:          0;
+    }
+  }
+
+  &--login-register {
+    margin:           0 auto;
+    padding:          $global-spacing-unit-small $global-spacing-unit;
+    position:         relative;
+    display:          flex;
+    flex-direction:   column;
+    color:            mat-color($mat-grey, 700);
+    background-color: mat-contrast($app-primary, 500);
+
+    @include mq($from: tablet-portrait) {
+      padding:        ($global-baseline * 5);
+      border-radius:  $global-baseline;
+    }
+
+    a {
+      color:        mat-color($mat-grey, 700);
+      font-weight:  $regular;
+
+      &:hover {
+        background-image: none;
+        text-decoration:  underline;
+      }
+    }
+
+    .c-modal {
+      &__divider {
+        flex:             0 0 auto;
+        background-color: mat-color($mat-grey, 300);
+        height:           1px;
+        margin:           ($global-baseline * 6) 0 ($global-baseline * 5);
+        position:         relative;
+
+        @include mq($from: tablet-landscape) {
+          height: auto;
+          width:  1px;
+          margin: 0 ($global-baseline * 8);
+        }
+
+        &-decoration {
+          @include font-size($global-epsilon-size, 1);
+
+          height:           $global-baseline * 5;
+          width:            $global-baseline * 5;
+          font-weight:      $bold;
+          text-transform:   uppercase;
+          border:           1px solid mat-color($mat-grey, 300);
+          border-radius:    50%;
+          background-color: mat-contrast($app-primary, 500);
+          display:          flex;
+          align-items:      center;
+          justify-content:  center;
+          position:         absolute;
+          top:              50%;
+          left:             50%;
+          transform:        translate3d(-50%, -50%, 0);
+
+          @include mq($from: tablet-landscape) {
+            height: $global-baseline * 6;
+            width:  $global-baseline * 6;
+          }
+        }
+      }
+
+      &__content {
+        display:        flex;
+        flex-direction: column;
+
+        @include mq($from: tablet-landscape) { flex-direction: row; }
+      }
+
+      &__social {
+        flex:             0 0 auto;
+        display:          flex;
+        justify-content:  center;
+        flex-direction:   row;
+        text-align:       center;
+        width:            100%;
+
+        @include mq($from: tablet-landscape) {
+          flex: 1 1 auto;
+          flex-direction:   column;
+        }
+
+        &-button {
+          @include z-depth(3);
+          @include font-size($global-delta-size);
+
+          font-weight:    $bold;
+          display:        inline-block;
+          height:         $global-baseline * 6;
+          min-width:      $global-baseline * 6;
+          padding-right:  0;
+          padding-left:   0;
+          margin:         0 $global-spacing-unit-small;
+          border-radius:  50%;
+
+          transition:
+            box-shadow $global-transition ease-in-out;
+
+          &:hover   { @include z-depth(4); }
+          &:active  { @include z-depth(2); }
+
+          > .mat-button-wrapper {
+            display:          flex;
+            align-items:      center;
+            justify-content:  center;
+          }
+
+          &--facebook {
+            background-color: #507cc0;
+            color:            #ffffff;
+          }
+
+          &--google {
+            background-color: #ffffff;
+            color:            mat-color($mat-grey, 700);
+          }
+
+          &:last-child { margin-bottom: 0; }
+
+          @include mq($from: tablet-landscape) {
+            height:         $global-baseline * 5;
+            padding-right:  $global-spacing-unit;
+            padding-left:   $global-spacing-unit-small;
+            margin-bottom:  $global-spacing-unit-small;
+            border-radius:  $global-radius;
+          }
+
+          @include mq($from: desktop) { width: 100%; }
+        }
+
+        &-text {
+          display: none;
+
+          @include mq($from: tablet-landscape) { display: inline-block; }
+        }
+
+        &-icon {
+          @include icon-size($global-spacing-unit - 4);
+
+          @include mq($from: tablet-landscape) { margin-right: $global-spacing-unit-tiny; }
+        }
+      }
+
+      &__form {
+        width: 100%;
+
+        @include mq($from: tablet-landscape) { flex: 1 1 auto; }
+
+        &-control { margin-bottom: $global-spacing-unit-small; }
+
+        &-button {
+          @include z-depth(3);
+
+          padding:  0;
+          height:   $global-baseline * 5;
+          width:    100%;
+
+          transition:
+            background $global-transition ease-in-out,
+            box-shadow $global-transition ease-in-out;
+
+          &:hover     { @include z-depth(4); }
+          &:active    { @include z-depth(2); }
+          &[disabled] { box-shadow: none; }
+
+          > .mat-button-wrapper {
+            display:          flex;
+            align-items:      center;
+            justify-content:  center;
+          }
+        }
+      }
+
+      &__action {
+        display:          flex;
+        align-items:      center;
+        justify-content:  center;
+        margin-top:       $global-spacing-unit-small;
+
+        &-link { @include font-size($global-delta-size); }
+
+        &-divider {
+          background-color: mat-color($mat-grey, 700);
+          height:           $global-spacing-unit-small;
+          width:            1px;
+          margin:           0 $global-spacing-unit-small;
+        }
+      }
+
+    }
+  }
+
+
+    &__close-button {
+      &, &.mat-icon-button {
+        position: fixed;
+        top:      $global-spacing-unit-tiny;
+        right:    $global-spacing-unit-tiny;
+        color:    mat-color($mat-grey, 700);
+
+        @include mq($from: tablet-portrait) {
+          position: absolute;
+        }
+
+        @include mq($from: tablet-landscape) {
+          margin: $global-spacing-unit-tiny;
+        }
+      }
+    }
+
+    &__progress-bar {
+      &, &.mat-progress-bar {
+        position: fixed;
+        bottom:   0;
+        left:     0;
+
+        @include mq($from: tablet-portrait) {
+          position: absolute;
+        }
+      }
+    }
+
+    &__button-spinner {
+      &, &.mat-progress-spinner {
+        position: absolute;
+        right:    $global-spacing-unit-small;
+      }
+    }
+
+    &__header { text-align: center; }
+
+    &__title { @include font-size($global-beta-size - 4); }
+}

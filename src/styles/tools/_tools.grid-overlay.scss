@@ -1,0 +1,109 @@
+@mixin grid-overlay() {
+  /* Settings */
+  :root {
+    --offset: #{$global-spacing-unit-small};
+    --max_width: #{$global-max-width - ($global-spacing-unit * 2)};
+    --columns: 6;
+    --gutter: #{$global-spacing-unit};
+    --baseline: #{$global-baseline};
+    --baseline-shift: 0;
+    --color: #{rgba(mat-color($app-primary, 300), 0.25)};
+    --color-text: #{mat-contrast($app-primary, 300)};
+    --label-color: #{mat-color($app-primary, 300)};
+    --media-query: 'stable';
+  }
+
+  @include mq($from: tablet-portrait) {
+    :root {
+      --gutter: #{$global-spacing-unit};
+      --color: #{rgba(mat-color($app-accent, 500), 0.25)};
+      --color-text: #{mat-contrast($app-accent, 500)};
+      --label-color: #{mat-color($app-accent, 500)};
+      --media-query: 'tablet-portrait';
+    }
+  }
+
+  @include mq($from: tablet-landscape){
+    :root {
+      --columns: 16;
+      --gutter: #{$global-spacing-unit};
+      --color: #{rgba(mat-color($app-primary, 300), 0.25)};
+      --color-text: #{mat-contrast($app-primary, 300)};
+      --label-color: #{mat-color($app-primary, 300)};
+      --media-query: 'tablet-landscape';
+    }
+  }
+
+  @include mq($from: desktop){
+    :root {
+      --offset: #{$global-spacing-unit};
+      --color: #{rgba(mat-color($app-accent, 500), 0.25)};
+      --color-text: #{mat-contrast($app-accent, 500)};
+      --label-color: #{mat-color($app-accent, 500)};
+      --media-query: 'desktop';
+    }
+  }
+
+  @include mq($from: stable){
+    :root {
+      --media-query: 'stable';
+    }
+  }
+
+
+  /* Helper variables */
+  :root {
+    --repeating-width: calc(100% / var(--columns));
+    --column-width: calc((100% / var(--columns)) - var(--gutter));
+    --background-width: calc(100% + var(--gutter));
+    --background-columns: repeating-linear-gradient(
+        to right,
+        var(--color),
+        var(--color) var(--column-width),
+        transparent var(--column-width),
+        transparent var(--repeating-width)
+    );
+    --background-baseline: repeating-linear-gradient(
+        to bottom,
+        var(--color),
+        var(--color) 1px,
+        transparent 1px,
+        transparent var(--baseline)
+    );
+  }
+
+  html {
+    position: relative;
+  }
+
+  html::before {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: calc(100% - (2 * var(--offset)));
+    max-width: var(--max_width);
+    min-height: 100vh;
+    content: '';
+    background-image: var(--background-columns), var(--background-baseline);
+    background-size: var(--background-width) 100%;
+    background-position: 0 var(--baseline-shift);
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+  html::after {
+    content: var(--media-query);
+    position: fixed;
+    top:  1rem;
+    left: 1rem;
+    background-color: var(--label-color);
+    color: var(--color-text);
+    padding: $global-spacing-unit-tiny;
+    z-index: 1001;
+  }
+}
+
+$show-grid: false !default;
+
+@if ($show-grid == true) { @include grid-overlay(); }

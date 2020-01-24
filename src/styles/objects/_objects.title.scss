@@ -1,0 +1,39 @@
+.o-title {
+  &__container {
+    padding: $global-spacing-unit-small 0 ($global-baseline * 4);
+
+    @include mq($from: tablet-landscape) {
+      padding: ($global-baseline * 5) 0;
+    }
+
+    @include mq($until: tablet-landscape) {
+      text-align: center;
+    }
+  }
+
+  &__principal, &__description { margin-bottom: 0; }
+
+  &__principal {
+    @include font-size($global-gamma-size + 4);
+    font-weight:  $regular;
+    color:        mat-color($mat-grey, 700);
+
+    @include mq($from: tablet-landscape) {
+      @include font-size($global-baseline * 4);
+    }
+  }
+
+  &__description {
+    @include font-size($global-gamma-size);
+    font-weight:  $regular;
+    color:        mat-color($mat-grey, 500);
+
+    @include mq($from: tablet-landscape) {
+      @include font-size($global-gamma-size);
+    }
+  }
+
+  &__principal + &__description {
+    margin-top: $global-spacing-unit-tiny;
+  }
+}

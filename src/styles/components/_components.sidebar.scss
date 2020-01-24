@@ -1,0 +1,12 @@
+.c-sidebar {
+  padding: $global-spacing-unit-large;
+
+  &__back {
+    margin-bottom:  $global-spacing-unit-large;
+    text-transform: uppercase;
+    font-weight:    $bold;
+
+    &-icon { transform: rotate(180deg); }
+  }
+
+}

@@ -1,0 +1,38 @@
+///* ========================================================================
+//   #RATIO
+//   ======================================================================== */
+
+///
+ // Mixin to create modifiers for the ratio and crop objects
+ // @param  { Number }  $antecedent - this part -> {16}:9
+ // @param  { Number }  $consequent - 16:{9} <- that part
+ // @param  { String }  $type - 'ratio' or 'crop' (defaults to 'ratio')
+ ///
+
+@mixin ratio($antecedent, $consequent, $type: 'ratio') {
+
+  @if (type-of($antecedent) != number) {
+    @error "`#{$antecedent}` needs to be a number.";
+  }
+
+  @if (type-of($consequent) != number) {
+    @error "`#{$consequent}` needs to be a number.";
+  }
+
+  $padding-size: ($consequent/$antecedent) * 100%;
+
+  @if $type == 'ratio' {
+
+    &:before { padding-bottom: $padding-size; }
+
+  } @else if $type == 'crop' {
+
+    padding-bottom: $padding-size;
+
+  } @else {
+
+    @error "`#{$type}` should be 'ratio' or 'crop'.";
+
+  }
+
+}

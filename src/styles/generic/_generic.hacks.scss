@@ -1,0 +1,56 @@
+/* ==========================================================================
+   #HACKS
+   ========================================================================== */
+
+
+
+
+
+/* Gas Tecnologia Object [_hack]
+   ========================================================================== */
+
+/**
+ * This object tag is inserted by protection bank plugins developed
+ * by Gas Tecnologia, a brazilian company, expert in internet security.
+ * This company provides service to the banks: Banco do Brasil, Caixa Econômica
+ * Federal, Itaú, Santander, Banco Mercantil do Brasil, Banco da Amazônia,
+ * Banestes and Tecnocred/Unicred. This is a serious bug, that causes a blank
+ * space to appear after the body tag.
+ */
+
+ object[type^='application/gas-events'] {
+  display: none;
+}
+
+
+
+
+
+/* 0x0 Iframe [_hack]
+   ========================================================================== */
+
+/**
+ * Similar to the object above, some third parts, including lejour's own
+ * lightbox, will add a 0 width, 0 height iframe to the bottom of the page,
+ * and it could result in strange blank lines.
+ */
+
+iframe[width='0'][height='0'] {
+  display: none;
+}
+
+
+
+
+/* mat-button-wrapper proper center
+   ========================================================================== */
+
+/**
+ * Properly align icons in mat-buttons
+ */
+
+.mat-button-wrapper {
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+}

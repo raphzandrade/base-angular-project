@@ -1,0 +1,21 @@
+$inuit-global-baseline: 6px;
+
+$inuit-global-spacing-unit-factor-tiny:  1;  // 6px
+$inuit-global-spacing-unit-factor-small: 2;  // 12px
+$inuit-global-spacing-unit-factor:       4;  // 24px
+$inuit-global-spacing-unit-factor-large: 6;  // 36px
+$inuit-global-spacing-unit-factor-huge:  12; // 72px
+
+
+// width utilities
+$inuit-fractions: 16 9;
+$inuit-offsets:   true;
+
+$inuit-static-images: false;
+
+@import 'settings.config';
+@import 'settings.core';
+@import 'settings.aliases';
+@import 'settings.colors';
+@import 'settings.global';
+@import 'settings.responsive';

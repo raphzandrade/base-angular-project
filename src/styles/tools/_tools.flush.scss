@@ -1,0 +1,16 @@
+@mixin flush($container-padding, $vertical: false) {
+  max-width:       unset;
+  width:           calc(100% + #{$container-padding * 2});
+  margin-right:    ($container-padding * -1);
+  margin-left:     ($container-padding * -1);
+
+  @if ($vertical == true) {
+    &:first-child {
+      margin-top: ($container-padding * -1);
+    }
+
+    &:last-child {
+      margin-bottom: ($container-padding * -1);
+    }
+  }
+}

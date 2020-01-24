@@ -1,0 +1,16 @@
+.c-tags-list {
+  margin-bottom: $global-spacing-unit;
+
+  &__tag {
+    @include font-size($global-epsilon-size, 1);
+
+    display:        inline-block;
+    padding:        ($global-spacing-unit-tiny / 2) $global-spacing-unit-small;
+    margin-right:   $global-spacing-unit-tiny;
+    margin-bottom:  $global-spacing-unit-tiny;
+    color:          mat-color($app-primary, 500);
+    border:         1px solid currentColor;
+    border-radius:  $global-baseline;
+    position:       relative;
+  }
+}

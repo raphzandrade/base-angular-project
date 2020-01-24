@@ -1,0 +1,49 @@
+///* ========================================================================
+//   #TEXT-CLAMP
+//   ======================================================================== */
+
+/**
+ * Trim multi-line text with ellipsis. Works better in conjunction with the
+ * font-size mixin.
+ */
+
+
+@mixin text-clamp(
+  $lines,
+  $font-size,
+  $line-height:   auto,
+  $modifier:      0,
+  $fixed-height:  false
+) {
+
+  @if (type-of($font-size) == number) {
+    @if (unit($font-size) != "px") {
+      @error "`#{$font-size}` needs to be a pixel value.";
+    }
+  } @else {
+    @error "`#{$font-size}` needs to be a number.";
+  }
+
+  overflow: hidden;
+
+  @if ($lines == 1) {
+    text-overflow:  ellipsis;
+    white-space:    nowrap;
+  } @else {
+    // noinspection CssInvalidPropertyValue
+    display:            -webkit-box;
+    -webkit-line-clamp: $lines;
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+  }
+
+  $line-height: line-height($font-size, $line-height, $modifier);
+
+  @if (type-of($line-height) == number) {
+    @if ($fixed-height == true) {
+      height:     floor($line-height * $global-font-size) * $lines;
+    } @else {
+      max-height: floor($line-height * $global-font-size) * $lines;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+/* ==========================================================================
+   #TABLE
+   ========================================================================== */
+
+/**
+ * A simple object for manipulating the structure of HTML `table`s.
+ */
+
+.o-table {
+  width: 100%;
+  color: mat-color($mat-grey, 700);
+
+  td, th {
+    padding-top:    ($global-spacing-unit-tiny / 2);
+    padding-bottom: ($global-spacing-unit-tiny / 2);
+  }
+
+  &--zebra {
+    tr:nth-child(even) {
+      background-color: mat-color($mat-grey, 100);
+    }
+  }
+
+  &--horizontal {
+    th {
+      text-align:     left;
+      white-space:    nowrap;
+      padding-right:  $global-spacing-unit-small;
+    }
+  }
+
+}

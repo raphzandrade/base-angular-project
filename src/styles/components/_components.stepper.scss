@@ -1,0 +1,61 @@
+.c-stepper {
+
+  &.mat-stepper-horizontal {
+    background: transparent;
+
+    &-line {
+      margin: 0 ($global-spacing-unit-tiny * -1);
+    }
+  }
+
+  .mat-horizontal-stepper-header-container {
+    margin: 0 auto;
+    max-width: $global-baseline * 60;
+    z-index: 3;
+
+    @include mq($from: tablet-landscape) {
+      bottom: 0;
+      left: 50%;
+      position: fixed;
+      transform: translateX(-50%);
+      width: $global-baseline * 50;
+    }
+  }
+
+  .mat-horizontal-stepper-header {
+    height: $global-baseline * 6;
+
+    @include mq($from: tablet-landscape) {
+      height: $global-baseline * 10;
+    }
+
+    .mat-step-icon,
+    .mat-step-icon-not-touched {
+      margin-right: 0;
+      height: $global-baseline * 3;
+      width: $global-baseline * 3;
+
+      @include mq($from: tablet-landscape) {
+        height: $global-baseline * 4;
+        width: $global-baseline * 4;
+      }
+    }
+
+    .mat-step-icon {
+      @include z-depth(1);
+      background-color: mat-color($app-accent, 500);
+      display:          flex;
+      align-items:      center;
+      justify-content:  center;
+    }
+
+    .mat-step-label {
+      display: none;
+    }
+  }
+
+  .mat-horizontal-content-container {
+    overflow: visible;
+    padding: 0;
+  }
+}

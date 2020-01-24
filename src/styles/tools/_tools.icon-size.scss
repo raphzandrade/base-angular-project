@@ -1,0 +1,53 @@
+///* ========================================================================
+//   #ICON-SIZE
+//   ======================================================================== */
+
+///
+ // Mixin to set icon size, with optional ratio
+ // @param  { Number } $size - pixel size of one of the sizes
+ // @param  { Number } $ratio - unitless fraction ratio (width/height)
+ // @param  { String } $given-property - 'width' or 'height'
+ //
+ ///
+
+@import 'tools.strip-unit';
+@import 'tools.font-size';
+
+@mixin icon-size(
+  $size,
+  $ratio: 1,
+  $given-property: 'height',
+  $important: false
+) {
+
+  // important!
+  @if ($important == true) {
+    $important: '!important';
+  } @else if ($important == false) {
+    $important: null;
+  } @else {
+    @error "`#{$important}` needs to be `true` or `false`.";
+  }
+
+  @include font-size($size, $line-height: 1);
+
+  $size: strip-unit($size);
+  $base: strip-unit($global-font-size);
+
+  @if $given-property == 'height' {
+
+    width: (($size * $ratio) / $base) * 1rem  #{$important};
+    height: ($size / $base) * 1rem  #{$important};
+
+  } @else if $given-property == 'width' {
+
+    width: ($size / $base) * 1rem  #{$important};
+    height: (($size * $ratio) / $base) * 1rem  #{$important};
+
+  } @else {
+
+    @error 'the third param ($given-property) should be "height" or "width"';
+
+  }
+
+}

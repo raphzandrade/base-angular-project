@@ -1,0 +1,15 @@
+.o-text-underline {
+  position: relative;
+
+  &:after {
+    background: mat-color($app-accent, 500);
+    bottom: $global-baseline * -0.5;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.o-text--primary { color: mat-color($app-primary, 500); }

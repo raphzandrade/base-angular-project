@@ -1,0 +1,157 @@
+@import "~@angular/material/theming";
+
+// brand
+
+$app-brand-color: #e2645a;
+
+// neutral background
+
+$app-light-primary-bg: white !default;
+$app-light-secondary-bg: mat-color($mat-grey, 50) !default;
+$app-light-disabled-button: rgba(white, 0.12);
+$app-dark-primary-bg: mat-color($mat-grey, 800) !default;
+$app-dark-secondary-bg: mat-color($mat-grey, 500) !default;
+$app-dark-disabled-button: rgba(black, 0.12);
+
+// neutral text (dark)
+
+$app-dark-primary-text: rgba(mat-color($mat-grey, 800), 0.87) !default;
+$app-dark-secondary-text: rgba(mat-color($mat-grey, 800), 0.64) !default;
+$app-dark-disabled-text: rgba(mat-color($mat-grey, 800), 0.38) !default;
+$app-dark-dividers: rgba(mat-color($mat-grey, 800), 0.12) !default;
+$app-dark-focused: rgba(mat-color($mat-grey, 800), 0.12) !default;
+
+// neutral text (light)
+
+$app-light-primary-text: white !default;
+$app-light-secondary-text: rgba(white, 0.7) !default;
+$app-light-disabled-text: rgba(white, 0.5) !default;
+$app-light-dividers: rgba(white, 0.12) !default;
+$app-light-focused: rgba(white, 0.12) !default;
+
+// grays
+$app-light-gray: #dbdbdb;
+$app-gray: #bababa;
+$app-dark-gray: #585858;
+
+// color pallets
+
+$app-primary: (
+  300: #81d8d0,
+  500: #68bfb7,
+  700: #84b8e2,
+  contrast: (
+    300: $light-primary-text,
+    500: $light-primary-text,
+    700: $light-primary-text,
+  )
+);
+
+$app-accent: (
+  300: #ea8079,
+  500: $app-brand-color,
+  700: #db5d79,
+  contrast: (
+    300: $light-primary-text,
+    500: $light-primary-text,
+    700: $light-primary-text,
+  )
+);
+
+// cores novas da paleta
+
+$app-grey: (
+  300: #dbdbdb,
+  500: #bababa,
+  700: #585858,
+  contrast: (
+    300: #585858,
+    500: #585858,
+    700: #ffffff
+  )
+);
+
+$app-warn: (
+  50: #fcf2ef,
+  100: #f9ded7,
+  200: #f5c8bc,
+  300: #f0b1a1,
+  400: #eda18d,
+  500: #ea9079,
+  600: #e78871,
+  700: #e47d66,
+  800: #e1735c,
+  900: #db6149,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text
+  )
+);
+
+$app-attention: (
+  50: #fff9ee,
+  100: #ffefd4,
+  200: #ffe5b8,
+  300: #ffdb9c,
+  400: #ffd386,
+  500: #ffcb71,
+  600: #ffc669,
+  700: #ffbe5e,
+  800: #ffb854,
+  900: #ffac42,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text
+  )
+);
+
+$app-neutral: (
+  50: #cccccc,
+  100: #aaaaaa,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text
+  )
+);
+
+// link colors
+
+$app-base-link-color: mat-color($app-primary, 500);
+$app-hover-link-color: mat-color($app-primary, 600);
+$app-active-link-color: mat-color($app-primary, 400);
+
+// $app-primary-gradient: linear-gradient(90deg, mat-color($app-primary,300), linear-gradient(90deg, mat-color($app-primary,300));
+// $app-accent-gradient: '';
+@mixin lj-primary-gradient {
+  color: mat-contrast($app-primary, 300);
+  background-image: linear-gradient(
+    to right,
+    (mat-color($app-primary, 300)),
+    (mat-color($app-primary, 700))
+  );
+}
+
+@mixin lj-accent-gradient {
+  color: mat-contrast($app-accent, 300);
+  background-image: linear-gradient(
+    to right,
+    (mat-color($app-accent, 300)),
+    (mat-color($app-accent, 700))
+  );
+}
