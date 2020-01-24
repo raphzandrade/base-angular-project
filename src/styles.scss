@@ -1,4 +1,6 @@
-@import 'styles/project-styles';
+$show-grid: false;
+
+@import 'project-styles';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
