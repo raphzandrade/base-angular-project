@@ -1,0 +1,12 @@
+///* ========================================================================
+//   #Z-DEPTH
+//   ======================================================================== */
+
+// add depth to elements according to the Google Material Design spec
+
+.u-z-depth-0 { box-shadow: none !important; }
+.u-z-depth-1 { @include z-depth(1, true); }
+.u-z-depth-2 { @include z-depth(2, true); }
+.u-z-depth-3 { @include z-depth(3, true); }
+.u-z-depth-4 { @include z-depth(4, true); }
+.u-z-depth-5 { @include z-depth(5, true); }

@@ -1,0 +1,11 @@
+///* ========================================================================
+//   #TRIM
+//   ======================================================================== */
+
+// trim one line text with text-overflow
+
+.u-trim {
+  max-width:      100% !important;
+  overflow:       hidden !important;
+  text-overflow:  ellipsis !important;
+}

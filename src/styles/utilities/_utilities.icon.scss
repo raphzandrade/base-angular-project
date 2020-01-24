@@ -1,0 +1,35 @@
+///* ========================================================================
+//   #ICON
+//   ======================================================================== */
+
+
+// sizes
+
+.u-icon-tiny    { @include icon-size($global-spacing-unit-tiny,   $important: true); }
+.u-icon-small   { @include icon-size($global-spacing-unit-small,  $important: true); }
+.u-icon-normal  { @include icon-size($global-spacing-unit,        $important: true); }
+.u-icon-large   { @include icon-size($global-spacing-unit-large,  $important: true); }
+.u-icon-huge    { @include icon-size($global-spacing-unit-huge,   $important: true); }
+
+
+// colors
+
+.u-icon-neutral {
+  color: mat-color($mat-grey, 400) !important;
+  svg { fill: mat-color($mat-grey, 400) !important; }
+}
+
+.u-icon-primary {
+  color: mat-color($app-primary, 500) !important;
+  svg { fill: mat-color($app-primary, 500) !important; }
+}
+
+.u-icon-accent  {
+  color: mat-color($app-accent, 500) !important;
+  svg { fill: mat-color($app-accent, 500) !important; }
+}
+
+.u-icon-warn    {
+  color: mat-color($mat-deep-orange, 500) !important;
+  svg { fill: mat-color($mat-deep-orange, 500) !important; }
+}
