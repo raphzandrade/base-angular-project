@@ -1,8 +1,8 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 // components
-import { HomePageComponent } from "./home-page.component";
+import { HomePageComponent } from './home-page.component';
 
 // modules
 import { HomePageRoutingModule } from './home-page-routing.module';

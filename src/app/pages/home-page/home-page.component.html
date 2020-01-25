@@ -4,8 +4,12 @@
       teste
     </div>
 
-    <div class="o-grid__cell u-8/16">
+    <div class="o-grid__cell u-8/16" *ngIf="isMenuOpen$ | async">
       teste
     </div>
+
+    <button class="o-grid__cell c-btn" (click)="toggleVisibility()">
+      show the other div
+    </button>
   </div>
 </section>
